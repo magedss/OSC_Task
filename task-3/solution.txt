@@ -1,0 +1,30 @@
+mkdir /home/mageds/project_files
+mkdir /home/mageds/project_files/reports /home/mageds/project_files/logs /home/mageds/project_files/data
+cd /home/mageds/project_files/reports
+touch report1.md report2.md
+cd /home/mageds/project_files/logs
+touch system.log error.log file1.pdf file2.pdf
+cd /home/mageds/project_files/data
+touch data.csv info.txt
+nano /home/mageds/project_files/reports/report1.md
+nano /home/mageds/project_files/logs/system.log
+nano /home/mageds/project_files/data/data.csv
+cd /home/mageds/project_files/logs
+tar -cvf logs_backup.tar *
+mv /home/mageds/project_files/logs/logs_backup.tar /home/mageds/project_files/
+cd /home/mageds/project_files/
+tar -xvf logs_backup.tar -C logs/
+find /home/mageds -name "*.md"
+find /home/mageds/project_files -name "*.log"
+find /home/mageds/project_files -name "file1.pdf"
+find /home/mageds/project_files -iname "*.pdf"
+find /home/mageds/project_files/logs -type f
+ln -s /home/mageds/project_files/data/data.csv /home/mageds/project_files/link_data.csv
+nano /home/mageds/project_files/link_data.csv
+rm /home/mageds/project_files/link_data.csv
+echo "Summary Start" > /home/mageds/project_files/summary.txt
+date >> /home/mageds/project_files/summary.txt
+wc -l < /home/mageds/project_files/summary.txt >> /home/mageds/project_files/summary.txt
+wc -w < /home/mageds/project_files/reports/report1.md
+wc -c < /home/mageds/project_files/logs/system.log >> /home/mageds/project_files/summary.txt
+find /home/mageds/project_files | wc -l >> /home/mageds/project_files/summary.txt
